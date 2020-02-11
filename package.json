@@ -1,11 +1,12 @@
 {
-  "name": "postcss-cell",
+  "name": "postcss-cellspan",
   "version": "0.0.0",
   "description": "PostCSS plugin fore create power grid cells",
   "keywords": [
     "postcss",
     "css",
     "postcss-plugin",
+    "cellspan",
     "cell"
   ],
   "scripts": {
@@ -13,7 +14,7 @@
   },
   "author": "HeadMad <kov.ps@yandex.ru>",
   "license": "MIT",
-  "repository": "HeadMad/postcss-cell",
+  "repository": "HeadMad/postcss-cellspan",
   "dependencies": {
     "postcss": "^7.0.18"
   },

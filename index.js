@@ -1,6 +1,6 @@
 let postcss = require('postcss')
 
-module.exports = postcss.plugin('postcss-cell', (decl = /^(width|height)$/) => {
+ const plugin = postcss.plugin('postcss-cellspan', (decl = /^(width|height)$/) => {
   const isCell = /^\d+\/\d+/
   return (root) => {
     root.walkDecls(decl, decl => {
@@ -13,16 +13,16 @@ module.exports = postcss.plugin('postcss-cell', (decl = /^(width|height)$/) => {
       let gap = matches[6]
       let gapExt = matches[7]
       let size = span/cols * 100
-      let gaps = gap * (cols - 1)
+      let gaps = gap * (cols - span) / cols
 
-      let value = !gaps ? size + '%'
-        : gapExt === '%' ? size - gap * (cols - span) / cols + '%'
-        : `calc(${size}% - ${gap * (cols - span) / cols}${gapExt})`
+      let value = !gap ? size + '%'
+        : gapExt === '%' ? size - gaps + '%'
+        : `calc(${size}% - ${gaps}${gapExt})`
 
       decl.cloneBefore({ value })
       decl.remove()
     })
-    // Transform CSS AST here
-
   }
 })
+
+module.exports = plugin
