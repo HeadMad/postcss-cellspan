@@ -1,51 +1,43 @@
-# PostCSS Plugin Boilerplate
+# Fast And Simple Grid Cell
 
-<img align="right" width="135" height="95"
-     title="Philosopher’s stone, logo of PostCSS"
-     src="http://postcss.github.io/postcss/logo-leftp.svg">
+[PostCSS] plugin postcss-cell.
 
-Сreate new PostCSS plugins in a few steps:
+[PostCSS]: https://github.com/postcss/postcss
 
-1. Clone this repository:
+```css
+.foo {
+    width: 1/5 30px; /* colspan/cols [gap] */
+    width: 1/4;
+    height: 1/5 5%;   /* rowspan/rows [gap] */
+}
+```
 
-    ```sh
-    git clone https://github.com/postcss/postcss-plugin-boilerplate.git
-    ```
+```css
+.foo {
+  width: calc(20% - 24px);
+  width: 25%;
+  height: 16%;
+}
+```
 
-2. Execute the wizard script. It will ask you a few questions
-   and fill all files with your data.
+## Usage
 
-    ```sh
-    node ./postcss-plugin-boilerplate/start
-    ```
+Check you project for existed PostCSS config: `postcss.config.js`
+in the project root, `"postcss"` section in `package.json`
+or `postcss` in bundle config.
 
-    Call it with `--yarn` argument, if you prefer [yarn](https://yarnpkg.com/)
-    package manager:
+If you already use PostCSS, add the plugin to plugins list:
 
-    ```sh
-    node ./postcss-plugin-boilerplate/start --yarn
-    ```
+```diff
+module.exports = {
+  plugins: [
++   require('postcss-cell'),
+    require('autoprefixer')
+  ]
+}
+```
 
-    Or use `--no-install` if you want to skip dependencies installation.
+If you do not use PostCSS, add it according to [official docs]
+and set this plugin in settings.
 
-3. Your plugin repository will now have a clean Git history.
-[Create the GitHub repository](https://github.com/new)
-and push your project there.
-
-4. Add your project to [Travis CI](https://travis-ci.org).
-
-5. Write some code to `index.js` and tests to `index.test.js`.
-
-6. Execute `npm test` command
-
-7. Add input and output CSS examples to `README.md`.
-
-8. Add options descriptions if your plugin has them.
-
-9. Fill `CHANGELOG.md` with initial version and release it to npm.
-
-10. Fork [PostCSS](https://github.com/postcss/postcss), add your plugin to the
-[Plugins list](https://github.com/postcss/postcss/blob/master/docs/plugins.md)
-and send a pull request.
-
-11. Follow [@PostCSS](https://twitter.com/postcss) to get the latest updates.
+[official docs]: https://github.com/postcss/postcss#usage
