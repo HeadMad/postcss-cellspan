@@ -1,6 +1,6 @@
 # Fast And Simple Grid Cell
 
-[PostCSS] plugin postcss-cell.
+[PostCSS] plugin postcss-cellspan.
 
 [PostCSS]: https://github.com/postcss/postcss
 
@@ -29,10 +29,11 @@ or `postcss` in bundle config.
 If you already use PostCSS, add the plugin to plugins list:
 
 ```diff
+const cellspan = require('postcss-cellspan')
+
 module.exports = {
   plugins: [
-+   require('postcss-cell'),
-    require('autoprefixer')
++   cellspan(/^(width|height)$/) // {String|RegExp} - porerty for replace value on computed value
   ]
 }
 ```
