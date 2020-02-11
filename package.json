@@ -1,18 +1,19 @@
 {
-  "name": "PLUGIN_NAME",
+  "name": "postcss-cell",
   "version": "0.0.0",
-  "description": "PostCSS plugin PLUGIN_DESC",
+  "description": "PostCSS plugin fore create power grid cells",
   "keywords": [
     "postcss",
     "css",
-    "postcss-plugin"KEYWORDS
+    "postcss-plugin",
+    "cell"
   ],
   "scripts": {
     "test": "jest && eslint ."
   },
-  "author": "AUTHOR_NAME <AUTHOR_EMAIL>",
+  "author": "HeadMad <kov.ps@yandex.ru>",
   "license": "MIT",
-  "repository": "GITHUB_NAME/PLUGIN_NAME",
+  "repository": "HeadMad/postcss-cell",
   "dependencies": {
     "postcss": "^7.0.18"
   },
