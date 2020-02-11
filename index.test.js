@@ -8,10 +8,14 @@ async function run (input, output, opts) {
   expect(result.warnings()).toHaveLength(0)
 }
 
-/* Write tests here
-
-it('does something', async () => {
-  await run('a{ }', 'a{ }', { })
+it('parameter without gap', async () => {
+  await run('a{width: 1/4;}', 'a{width: 25%;}')
 })
 
-*/
+it('parameter width gap in px', async () => {
+  await run('a{width: 1/5 30px;}', 'a{width: calc(20% - 24px);}')
+})
+
+it('parameter width gap in %', async () => {
+  await run('a{width: 1/5 5%;}', 'a{width: 16%;}')
+})
