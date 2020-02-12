@@ -3,23 +3,24 @@ let postcss = require('postcss')
 const plugin = postcss.plugin('postcss-cellspan', prop => {
   prop = prop || /^(width|height)$/
   const isCell = /^\d+\/\d+/
-  const parseRE = /^(\d+)\/(\d+)(\s+(\d+)(px|%|em|rem|vw|vh|vmin|vmax|pt))?/
+  const parseRE = /^(\d+)\/(\d+)(%|vh|vw|vmin|vmax)?(\s+(\d+)(px|%|em|rem|vw|vh|vmin|vmax|pt))?/
 
   return (root) => {
     root.walkDecls(prop, decl => {
       if (!isCell.test(decl.value)) return
 
-      let matches = decl.value.match(parseRE)
-      let span = matches[1]
-      let cols = matches[2]
-      let gap = matches[4]
-      let gapExt = matches[5]
-      let size = span / cols * 100
-      let gaps = gap * (cols - span) / cols
+      let matches = decl.value.match(parseRE),
+          span = matches[1],
+          cells = matches[2],
+          cellExt = matches[3] || '%',
+          gap = matches[5],
+          gapExt = matches[6],
+          size = span / cells * 100,
+          gaps = gap * (cells - span) / cells
 
-      let value = !gap ? size + '%'
-        : gapExt === '%' ? size - gaps + '%'
-        : `calc(${size}% - ${gaps}${gapExt})`
+      let value = !gap ? size + cellExt
+        : cellExt === gapExt? size - gaps + cellExt
+        : `calc(${size}${cellExt} - ${gaps}${gapExt})`
 
       decl.cloneBefore({ value })
       decl.remove()
