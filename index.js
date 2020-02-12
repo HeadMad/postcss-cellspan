@@ -1,9 +1,9 @@
 let postcss = require('postcss')
 
-const plugin = postcss.plugin('postcss-cellspan', (prop) => {
+const plugin = postcss.plugin('postcss-cellspan', prop => {
   prop = prop || /^(width|height)$/
   const isCell = /^\d+\/\d+/
-  const parseRE = /((\d+)\/(\d+))(\s+((\d+)(px|%|em|rem|pt|wh|wv)))?/
+  const parseRE = /^(\d+)\/(\d+)(\s+(\d+)(px|%|em|rem|vw|vh|vmin|vmax|pt))?/
 
   return (root) => {
     root.walkDecls(prop, decl => {
