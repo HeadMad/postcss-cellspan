@@ -10,10 +10,10 @@ const plugin = postcss.plugin('postcss-cellspan', prop => {
       if (!isCell.test(decl.value)) return
 
       let matches = decl.value.match(parseRE)
-      let span = matches[2]
-      let cols = matches[3]
-      let gap = matches[6]
-      let gapExt = matches[7]
+      let span = matches[1]
+      let cols = matches[2]
+      let gap = matches[4]
+      let gapExt = matches[5]
       let size = span / cols * 100
       let gaps = gap * (cols - span) / cols
 
