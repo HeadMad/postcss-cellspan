@@ -33,7 +33,7 @@ const cellspan = require('postcss-cellspan')
 
 module.exports = {
   plugins: [
-+   cellspan(/^(width|height)$/) // {String|RegExp} - porerty for replace value on computed value
++   cellspan({prop: /^(width|height)$/}) // {String|RegExp} - porerty for replace value on computed value
   ]
 }
 ```
