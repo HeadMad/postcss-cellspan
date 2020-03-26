@@ -1,7 +1,7 @@
 let postcss = require('postcss')
 
-const plugin = postcss.plugin('postcss-cellspan', prop => {
-  prop = prop || /^(width|height)$/
+const cellSpanPlugin = postcss.plugin('postcss-cellspan', (opts = {}) => {
+  prop = opts.prop || /^(width|height)$/
   const isCell = /^\d+\/\d+/
   const parseRE = /^(\d+)\/(\d+)(%|vh|vw|vmin|vmax)?(\s+(\d+)(px|%|em|rem|vw|vh|vmin|vmax|pt))?/
 
@@ -28,4 +28,4 @@ const plugin = postcss.plugin('postcss-cellspan', prop => {
   }
 })
 
-module.exports = plugin
+module.exports = cellSpanPlugin
