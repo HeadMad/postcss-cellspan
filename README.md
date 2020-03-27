@@ -4,6 +4,12 @@
 
 [PostCSS]: https://github.com/postcss/postcss
 
+## Install
+```
+npm install --save-dev HeadMad/postcss-cellspan#1.0
+```
+
+## Exemple
 ```css
 .foo {
     width: 1/5 30px; /* colspan/cols [gap] */
@@ -28,15 +34,18 @@ or `postcss` in bundle config.
 
 If you already use PostCSS, add the plugin to plugins list:
 
-```diff
+```javascript
 const cellspan = require('postcss-cellspan')
 
 module.exports = {
   plugins: [
-+   cellspan({prop: /^(width|height)$/}) // {String|RegExp} - porerty for replace value on computed value
+    cellspan({prop: /^(width|height)$/})
   ]
 }
 ```
+Plugin get object as argument, with next fields:
+- **prop**
+  <br> `{String|RegExp}`. Name of property, that value mast be checked. By default - `/^(width|height)$/`
 
 If you do not use PostCSS, add it according to [official docs]
 and set this plugin in settings.
