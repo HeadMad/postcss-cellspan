@@ -6,7 +6,11 @@
 
 ## Install
 ```
-npm install --save-dev HeadMad/postcss-cellspan#1.0
+npm install --save-dev postcss-cellspan
+```
+or
+```
+npm i -D HeadMad/postcss-cellspan
 ```
 
 ## Exemple
