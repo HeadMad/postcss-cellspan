@@ -1,6 +1,6 @@
 {
   "name": "postcss-cellspan",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "PostCSS plugin fore create power grid cells",
   "keywords": [
     "postcss",
